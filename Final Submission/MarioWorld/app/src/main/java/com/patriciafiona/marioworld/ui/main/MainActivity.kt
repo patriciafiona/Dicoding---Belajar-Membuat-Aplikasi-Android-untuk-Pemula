@@ -1,4 +1,4 @@
-package com.patriciafiona.marioworld
+package com.patriciafiona.marioworld.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarioWorld</string>
+    <string name="mario_world">Mario World</string>
+    <string name="get_started">Get Started</string>
 </resources>
