@@ -9,7 +9,7 @@
         <item name="colorSecondary">@color/bg_orange</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/mario_red_dark</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/mario_red</item>
     </style>
 
     <style name="Theme.MarioWorld" parent="Base.Theme.MarioWorld" />

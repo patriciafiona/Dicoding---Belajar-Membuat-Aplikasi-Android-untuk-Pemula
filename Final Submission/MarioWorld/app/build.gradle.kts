@@ -47,6 +47,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation("com.ncorti:slidetoact:0.10.0")
+    implementation("com.airbnb.android:lottie:3.4.0")
+    implementation("com.makeramen:roundedimageview:2.3.0")
 
     //Test
     testImplementation("junit:junit:4.13.2")
