@@ -17,4 +17,13 @@
     <string name="stamina">Stamina</string>
     <string name="description">Description</string>
     <string name="read_m">… Read more</string>
+    <string name="patricia_fiona">Patricia Fiona</string>
+    <string name="email">patriciafiona3@gmail.com</string>
+    <string name="online">Online</string>
+    <string name="xp">XP</string>
+    <string name="xp_value">21879</string>
+    <string name="since">Since</string>
+    <string name="since_value">2019</string>
+    <string name="academy">Academy</string>
+    <string name="academy_value">18</string>
 </resources>

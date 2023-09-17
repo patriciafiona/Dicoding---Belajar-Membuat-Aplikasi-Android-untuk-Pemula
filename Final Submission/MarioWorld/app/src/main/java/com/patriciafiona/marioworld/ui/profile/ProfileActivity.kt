@@ -12,5 +12,13 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        initView()
+    }
+
+    private fun initView(){
+        with(binding){
+            btnBack.setOnClickListener { onBackPressed() }
+        }
     }
 }
