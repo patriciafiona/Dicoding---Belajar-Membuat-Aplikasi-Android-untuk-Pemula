@@ -6,21 +6,22 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ncorti.slidetoact.SlideToActView
 import com.patriciafiona.marioworld.R
-import com.patriciafiona.marioworld.databinding.ActivitySplashBinding
+import com.patriciafiona.marioworld.databinding.ActivityOnboardingBinding
 import com.patriciafiona.marioworld.ui.main.MainActivity
 import com.patriciafiona.marioworld.utils.MediaPlayerManager
+import com.patriciafiona.marioworld.utils.Utils
 import kotlinx.coroutines.runBlocking
 
 
 class OnBoardingActivity : AppCompatActivity(), SlideToActView.OnSlideToActAnimationEventListener {
 
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var binding: ActivityOnboardingBinding
     private lateinit var sharedPrefs: SharedPreferences
 
     private lateinit var bgSoundManager: MediaPlayerManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         bgSoundManager = MediaPlayerManager(applicationContext)

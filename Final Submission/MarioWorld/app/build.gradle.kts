@@ -13,7 +13,7 @@ android {
         minSdk = 24
         targetSdk = 33
         versionCode = 1
-        versionName = "0.0.1"
+        versionName = "0.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,6 +49,9 @@ dependencies {
     implementation("com.ncorti:slidetoact:0.10.0")
     implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.github.markushi:circlebutton:1.1")
+    implementation("com.github.fuzz-productions:RatingBar:1.0.6")
+    implementation("kr.co.prnd:readmore-textview:1.0.0")
 
     //Test
     testImplementation("junit:junit:4.13.2")

@@ -1,6 +1,7 @@
 package com.patriciafiona.marioworld.ui.main.adapter
 
 import android.animation.ValueAnimator
+import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,10 +15,15 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.patriciafiona.marioworld.R
 import com.patriciafiona.marioworld.data.entities.Character
+import com.patriciafiona.marioworld.utils.MediaPlayerManager
 import com.patriciafiona.marioworld.utils.Utils.fadeVisibility
 
 
-class ListCharactersAdapter(private val listCharacters: ArrayList<Character>) : RecyclerView.Adapter<ListCharactersAdapter.ListViewHolder>() {
+class ListCharactersAdapter(
+    private val listCharacters: ArrayList<Character>,
+    private val context: Context
+) : RecyclerView.Adapter<ListCharactersAdapter.ListViewHolder>() {
+
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -32,6 +38,7 @@ class ListCharactersAdapter(private val listCharacters: ArrayList<Character>) : 
         val character = listCharacters[position]
         var isExpand: Boolean = false
         var prevHeight: Int = 0
+        val soundManager = MediaPlayerManager(context)
 
         holder.tvName.text = character.name
         holder.tvDescription.text = character.description
@@ -60,8 +67,10 @@ class ListCharactersAdapter(private val listCharacters: ArrayList<Character>) : 
 
             if (isExpand){
                 holder.btnSeeDetails.fadeVisibility(View.VISIBLE, 700)
+                soundManager.startSound(R.raw.slide_down)
             }else{
                 holder.btnSeeDetails.fadeVisibility(View.GONE, 2000)
+                soundManager.startSound(R.raw.slide_up)
             }
         }
 

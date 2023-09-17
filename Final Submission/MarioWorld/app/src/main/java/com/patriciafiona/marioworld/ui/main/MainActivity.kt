@@ -4,16 +4,20 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.patriciafiona.marioworld.R
 import com.patriciafiona.marioworld.data.entities.Character
 import com.patriciafiona.marioworld.data.resource.DataSource
 import com.patriciafiona.marioworld.databinding.ActivityMainBinding
+import com.patriciafiona.marioworld.ui.character_detail.DetailActivity
 import com.patriciafiona.marioworld.ui.main.adapter.ListCharactersAdapter
 import com.patriciafiona.marioworld.ui.main.adapter.ListNewsAdapter
 import com.patriciafiona.marioworld.utils.MediaPlayerManager
+import com.patriciafiona.marioworld.utils.Utils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
@@ -22,19 +26,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPrefs: SharedPreferences
 
+    var doubleBackToExitPressedOnce = false
+
     private lateinit var bgSoundManager: MediaPlayerManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        bgSoundManager = MediaPlayerManager(applicationContext)
-
-        sharedPrefs = getSharedPreferences("com.patriciafiona.marioworld", MODE_PRIVATE)
-        setSoundStatus()
-
-        initView()
     }
 
     private fun initView(){
@@ -49,6 +48,36 @@ class MainActivity : AppCompatActivity() {
             rvCharacters.setHasFixedSize(true)
             showCharactersRecyclerList()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        bgSoundManager = MediaPlayerManager(applicationContext)
+
+        sharedPrefs = getSharedPreferences("com.patriciafiona.marioworld", MODE_PRIVATE)
+        setSoundStatus()
+
+        initView()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        bgSoundManager.stopSound()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+        doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+            doubleBackToExitPressedOnce = false
+        }, 2000)
     }
 
     private fun setSoundStatus(isChangeStatus: Boolean = false){
@@ -100,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     private fun showCharactersRecyclerList() {
         with(binding) {
             rvCharacters.layoutManager = LinearLayoutManager(this@MainActivity)
-            val listCharactersAdapter = ListCharactersAdapter(DataSource.characters())
+            val listCharactersAdapter = ListCharactersAdapter(DataSource.characters(), this@MainActivity)
             rvCharacters.adapter = listCharactersAdapter
 
             listCharactersAdapter.setOnItemClickCallback(object : ListCharactersAdapter.OnItemClickCallback {
@@ -115,6 +144,9 @@ class MainActivity : AppCompatActivity() {
                         delay(100)
 
                         //Go to Detail Page
+                        val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                        intent.putExtra("character", data)
+                        startActivity(intent)
                     }
                 }
             })

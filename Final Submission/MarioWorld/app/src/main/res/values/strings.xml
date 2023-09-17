@@ -9,4 +9,12 @@
     <string name="characters">Characters</string>
     <string name="character_template">Mario</string>
     <string name="see_details">See details</string>
+    <string name="character_statistic">Character Statistic</string>
+    <string name="acceleration">Acceleration</string>
+    <string name="max_speed">Max Speed</string>
+    <string name="technique">Technique</string>
+    <string name="power">Power</string>
+    <string name="stamina">Stamina</string>
+    <string name="description">Description</string>
+    <string name="read_m">… Read more</string>
 </resources>
