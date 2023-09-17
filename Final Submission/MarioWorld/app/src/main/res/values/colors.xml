@@ -11,11 +11,6 @@
     <color name="mario_red">#E70112</color>
     <color name="mario_red_dark">#8B0416</color>
 
-    <color name="bg_blue">#3998F5</color>
-    <color name="bg_purple">#AE10BD</color>
     <color name="bg_green">#3DDC4D</color>
-    <color name="bg_tosca">#01ACBB</color>
-    <color name="bg_magenta">#ff0f7b</color>
     <color name="bg_orange">#f89b29</color>
-    <color name="bg_green_grass">#007030</color>
 </resources>

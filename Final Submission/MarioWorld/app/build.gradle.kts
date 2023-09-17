@@ -47,7 +47,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation("com.ncorti:slidetoact:0.10.0")
-    implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.makeramen:roundedimageview:2.3.0")
     implementation("com.github.markushi:circlebutton:1.1")
     implementation("com.github.fuzz-productions:RatingBar:1.0.6")

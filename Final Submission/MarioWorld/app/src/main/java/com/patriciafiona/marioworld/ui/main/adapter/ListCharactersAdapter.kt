@@ -3,7 +3,6 @@ package com.patriciafiona.marioworld.ui.main.adapter
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

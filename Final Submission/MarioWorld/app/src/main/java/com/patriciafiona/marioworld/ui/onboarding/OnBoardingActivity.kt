@@ -9,7 +9,6 @@ import com.patriciafiona.marioworld.R
 import com.patriciafiona.marioworld.databinding.ActivityOnboardingBinding
 import com.patriciafiona.marioworld.ui.main.MainActivity
 import com.patriciafiona.marioworld.utils.MediaPlayerManager
-import com.patriciafiona.marioworld.utils.Utils
 import kotlinx.coroutines.runBlocking
 
 

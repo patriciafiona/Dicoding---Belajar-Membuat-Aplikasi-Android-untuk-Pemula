@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.patriciafiona.marioworld.R
 import com.patriciafiona.marioworld.data.entities.Character
@@ -19,7 +18,6 @@ import com.patriciafiona.marioworld.ui.main.adapter.ListCharactersAdapter
 import com.patriciafiona.marioworld.ui.main.adapter.ListNewsAdapter
 import com.patriciafiona.marioworld.ui.profile.ProfileActivity
 import com.patriciafiona.marioworld.utils.MediaPlayerManager
-import com.patriciafiona.marioworld.utils.Utils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
