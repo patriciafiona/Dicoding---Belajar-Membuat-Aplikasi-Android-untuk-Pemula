@@ -2,6 +2,7 @@ package com.patriciafiona.marioworld.ui.onboarding
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ncorti.slidetoact.SlideToActView
@@ -23,8 +24,6 @@ class OnBoardingActivity : AppCompatActivity(), SlideToActView.OnSlideToActAnima
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        bgSoundManager = MediaPlayerManager(applicationContext)
-
         sharedPrefs = getSharedPreferences("com.patriciafiona.marioworld", MODE_PRIVATE)
         if(!sharedPrefs.contains("isMute")){
             //default sound is not mute
@@ -32,9 +31,19 @@ class OnBoardingActivity : AppCompatActivity(), SlideToActView.OnSlideToActAnima
             ed.putBoolean("isMute", false)
             ed.apply()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bgSoundManager = MediaPlayerManager(applicationContext)
         setSoundStatus()
 
         initView()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        bgSoundManager.stopSound()
     }
 
     private fun initView(){
@@ -43,6 +52,23 @@ class OnBoardingActivity : AppCompatActivity(), SlideToActView.OnSlideToActAnima
 
             btnSound.setOnClickListener {
                 setSoundStatus(isChangeStatus = true)
+            }
+
+            when (resources.configuration.orientation) {
+                Configuration.ORIENTATION_PORTRAIT -> {
+                    marioTitle.layoutParams.width = 800
+                }
+                Configuration.ORIENTATION_LANDSCAPE -> {
+                    marioTitle.layoutParams.width = 600
+                }
+
+                Configuration.ORIENTATION_SQUARE -> {
+                    marioTitle.layoutParams.width = 600
+                }
+
+                Configuration.ORIENTATION_UNDEFINED -> {
+                    marioTitle.layoutParams.width = 800
+                }
             }
         }
     }
