@@ -1,6 +1,7 @@
 package com.patriciafiona.marioworld.ui.character_detail
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -20,10 +21,6 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var bgSoundManager: MediaPlayerManager
-
-    private var isSound1Play: Boolean = false
-    private var isSound2Play: Boolean = false
-    private var isSound3Play: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +48,14 @@ class DetailActivity : AppCompatActivity() {
 
                 btnSound.setOnClickListener {
                     setSoundStatus(isChangeStatus = true)
+                }
+
+                actionShare.setOnClickListener {
+                    val i = Intent(Intent.ACTION_SEND)
+                    i.type = "text/plain"
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Sharing URL")
+                    i.putExtra(Intent.EXTRA_TEXT, "https://mario.nintendo.com/characters/")
+                    startActivity(Intent.createChooser(i, "Share Official Website URL"))
                 }
 
                 val window = window
